@@ -1,40 +1,49 @@
 import Head from "next/head";
 import styles from "@/pages/index.module.css";
-import useForm from "hooks/use_form/use_form";
+import useForm from "@/hooks/use_form/use_form";
+import Form from "@/components/form/form";
+import CalculateService, {
+  FinStatus,
+  Response,
+} from "@/services/calculate/calculate";
+import { useEffect, useState } from "react";
+import Result from "@/components/result/result";
 
-type FinStatus = {
-  hasPartner: boolean;
-  baseSalary: number;
-  secondBaseSalary: number;
-  hasOtherIncome: boolean;
-  otherIncome: number[];
-  hasLoan: boolean;
-  loans: number[];
-  hasCreditCard: boolean;
-  creditCards: number[];
-  deposit: number;
-};
+interface IProps {
+  calculate: CalculateService;
+}
 
-export default function Home() {
+export default function Home({ calculate }: IProps) {
   const initialValues: FinStatus = {
     hasPartner: false,
     baseSalary: 0,
     secondBaseSalary: 0,
     hasOtherIncome: false,
-    otherIncome: [],
+    otherIncome: [0],
     hasLoan: false,
-    loans: [],
+    loans: [0],
     hasCreditCard: false,
-    creditCards: [],
+    creditCards: [0],
     deposit: 0,
   };
 
-  const onSubmit = (values: FinStatus) => {};
-
-  const { values, setValues, handleChange, submitHandle } = useForm<FinStatus>({
+  const { values, handleChangeNumber, setValue, response } = useForm<
+    FinStatus,
+    Response
+  >({
     initialValues,
-    onSubmit,
+    sendRequest: calculate.sendRequest,
   });
-
-  return <div className={styles.container}></div>;
+  console.log(values);
+  console.log(response);
+  return (
+    <div className={styles.container}>
+      <Form
+        values={values}
+        handleChangeNumber={handleChangeNumber}
+        setValue={setValue}
+      />
+      <Result response={response} values={values} calculate={calculate} />
+    </div>
+  );
 }
