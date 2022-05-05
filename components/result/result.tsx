@@ -12,7 +12,7 @@ interface IProps {
 export default function Result({ response, values, calculate }: IProps) {
   return (
     <div>
-      <p>Here's what you can borrow</p>
+      <p>Here&apos;s what you can borrow</p>
       <b>{response?.borrowing.toLocaleString("en-NZ")}</b>
       <p>Total income</p>
       <p>{calculate.getTotalIncome(values).toLocaleString("en-NZ")}</p>

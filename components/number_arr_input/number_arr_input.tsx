@@ -14,9 +14,11 @@ export default function NumberArrInput({
   setValue,
 }: IProps) {
   const [arr, setArr] = useState(value);
+
   useEffect(() => {
     setValue(name, arr);
-  }, [arr]);
+  }, [arr, name, setValue]);
+
   return (
     <div>
       <p>{desc}</p>
