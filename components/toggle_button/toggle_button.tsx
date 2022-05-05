@@ -23,7 +23,7 @@ export default function ToggleButton({
 
   useEffect(() => {
     onChange(name, checked);
-  }, [checked, name, onChange]);
+  }, [checked]);
 
   return (
     <div>

@@ -34,8 +34,6 @@ export default function Home({ calculate }: IProps) {
     initialValues,
     sendRequest: calculate.sendRequest,
   });
-  console.log(values);
-  console.log(response);
   return (
     <div className={styles.container}>
       <Form

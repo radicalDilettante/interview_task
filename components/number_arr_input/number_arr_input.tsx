@@ -17,7 +17,7 @@ export default function NumberArrInput({
 
   useEffect(() => {
     setValue(name, arr);
-  }, [arr, name, setValue]);
+  }, [arr]);
 
   return (
     <div>
