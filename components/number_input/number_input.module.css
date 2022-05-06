@@ -9,11 +9,19 @@
   justify-content: space-between;
 }
 
+.input_wrapper {
+  width: 80%;
+}
 .input_wrapper span {
   padding: 0 5px;
   width: 20px;
 }
 
 .input_wrapper input {
+  width: 80%;
+  border: none;
+}
+
+.select {
   border: none;
 }

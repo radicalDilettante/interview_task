@@ -8,10 +8,16 @@ import styles from "./form.module.css";
 interface IProps {
   values: FinStatus;
   handleChangeNumber: ChangeEventHandler<HTMLInputElement>;
-  setValue: (name: string, value: boolean | number[]) => void;
+  setValue: (name: string, value: boolean | number[] | string[]) => void;
+  handleChangeSelector: ChangeEventHandler<HTMLSelectElement>;
 }
 
-export default function Form({ values, handleChangeNumber, setValue }: IProps) {
+export default function Form({
+  values,
+  handleChangeNumber,
+  setValue,
+  handleChangeSelector,
+}: IProps) {
   return (
     <form className={styles.container}>
       {/* salary */}
@@ -28,6 +34,8 @@ export default function Form({ values, handleChangeNumber, setValue }: IProps) {
         value={values.baseSalary}
         desc="What's your base salary/wages? (before tax)"
         onChange={handleChangeNumber}
+        periodName="baseSalaryPeriod"
+        onChangePeriod={handleChangeSelector}
       />
       {values.hasPartner && (
         <NumberInput
@@ -35,6 +43,8 @@ export default function Form({ values, handleChangeNumber, setValue }: IProps) {
           value={values.secondBaseSalary}
           desc="What's the second applicant's base salary/wages? (before tax)"
           onChange={handleChangeNumber}
+          periodName="secondBaseSalaryPeriod"
+          onChangePeriod={handleChangeSelector}
         />
       )}
 
@@ -53,6 +63,8 @@ export default function Form({ values, handleChangeNumber, setValue }: IProps) {
           value={values.otherIncome}
           desc="Other income"
           setValue={setValue}
+          periodName="otherIncomePeriod"
+          periodValue={values.otherIncomePeriod}
         />
       )}
 

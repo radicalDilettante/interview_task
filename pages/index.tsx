@@ -16,9 +16,12 @@ export default function Home({ calculate }: IProps) {
   const initialValues: FinStatus = {
     hasPartner: false,
     baseSalary: 0,
+    baseSalaryPeriod: "year",
     secondBaseSalary: 0,
+    secondBaseSalaryPeriod: "year",
     hasOtherIncome: false,
     otherIncome: [0],
+    otherIncomePeriod: ["year"],
     hasLoan: false,
     loans: [0],
     hasCreditCard: false,
@@ -26,13 +29,17 @@ export default function Home({ calculate }: IProps) {
     deposit: 0,
   };
 
-  const { values, handleChangeNumber, setValue, response } = useForm<
-    FinStatus,
-    Response
-  >({
+  const {
+    values,
+    handleChangeNumber,
+    handleChangeSelector,
+    setValue,
+    response,
+  } = useForm<FinStatus, Response>({
     initialValues,
     sendRequest: calculate.sendRequest,
   });
+
   return (
     <div className={styles.container}>
       <section className={styles.form}>
@@ -40,6 +47,7 @@ export default function Home({ calculate }: IProps) {
           values={values}
           handleChangeNumber={handleChangeNumber}
           setValue={setValue}
+          handleChangeSelector={handleChangeSelector}
         />
       </section>
       <section className={styles.result}>

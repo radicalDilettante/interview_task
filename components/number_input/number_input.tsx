@@ -5,9 +5,18 @@ interface IProps {
   value: number;
   desc: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
+  periodName?: string;
+  onChangePeriod?: ChangeEventHandler<HTMLSelectElement>;
 }
 
-export default function NumberInput({ name, value, desc, onChange }: IProps) {
+export default function NumberInput({
+  name,
+  value,
+  desc,
+  onChange,
+  periodName,
+  onChangePeriod,
+}: IProps) {
   return (
     <div>
       <p>{desc}</p>
@@ -16,6 +25,16 @@ export default function NumberInput({ name, value, desc, onChange }: IProps) {
           <span>$</span>
           <input type="number" name={name} value={value} onChange={onChange} />
         </div>
+        {periodName && (
+          <select
+            className={styles.select}
+            name={periodName}
+            onChange={onChangePeriod}
+          >
+            <option value="year">per year</option>
+            <option value="week">per week</option>
+          </select>
+        )}
       </div>
     </div>
   );

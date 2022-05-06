@@ -17,7 +17,12 @@ function useForm<Status, Response>({
     setValues({ ...values, [name]: parseInt(value) });
   };
 
-  const setValue = (name: string, value: boolean | number[]) => {
+  const handleChangeSelector = (e: ChangeEvent<HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
+  };
+
+  const setValue = (name: string, value: boolean | number[] | string[]) => {
     setValues({ ...values, [name]: value });
   };
 
@@ -31,6 +36,7 @@ function useForm<Status, Response>({
   return {
     values,
     handleChangeNumber,
+    handleChangeSelector,
     setValue,
     response,
   };

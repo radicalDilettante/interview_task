@@ -4,7 +4,9 @@ interface IProps {
   name: string;
   value: number[];
   desc: string;
-  setValue: (name: string, value: number[]) => void;
+  setValue: (name: string, value: number[] | string[]) => void;
+  periodName?: string;
+  periodValue?: string[];
 }
 
 export default function NumberArrInput({
@@ -12,8 +14,11 @@ export default function NumberArrInput({
   value,
   desc,
   setValue,
+  periodName,
+  periodValue,
 }: IProps) {
   const [arr, setArr] = useState(value);
+  const [periodArr, setPeriodArr] = useState(periodValue);
 
   useEffect(() => {
     setValue(name, arr);
@@ -38,18 +43,43 @@ export default function NumberArrInput({
               }}
             />
           </div>
-          <button
-            className={styles.delete_button}
-            onClick={(e) => {
-              e.preventDefault();
-              const newArr = arr;
-              newArr.splice(index, 1);
-              setArr(newArr);
-              setValue(name, newArr);
-            }}
-          >
-            x
-          </button>
+          <div className={styles.button_wrapper}>
+            {periodName && (
+              <select
+                className={styles.select}
+                name={periodName}
+                onChange={(e) => {
+                  const { value } = e.target;
+                  const newArr = [...periodArr!];
+                  newArr[index] = value;
+                  setPeriodArr(newArr);
+                  setValue(periodName, newArr);
+                }}
+              >
+                <option value="year">per year</option>
+                <option value="week">per week</option>
+              </select>
+            )}
+            <button
+              className={styles.delete_button}
+              onClick={(e) => {
+                e.preventDefault();
+                const newArr = arr;
+                newArr.splice(index, 1);
+                setArr(newArr);
+                setValue(name, newArr);
+
+                if (periodName) {
+                  const newPeriodArr = periodArr;
+                  newPeriodArr!.splice(index, 1);
+                  setPeriodArr(newPeriodArr);
+                  setValue(periodName!, newPeriodArr!);
+                }
+              }}
+            >
+              x
+            </button>
+          </div>
         </div>
       ))}
       <button
@@ -60,6 +90,13 @@ export default function NumberArrInput({
           newArr.push(0);
           setArr(newArr);
           setValue(name, newArr);
+
+          if (periodName) {
+            const newPeriodArr = periodArr;
+            newPeriodArr?.push("year");
+            setPeriodArr(newPeriodArr);
+            setValue(periodName!, newPeriodArr!);
+          }
         }}
       >
         Add {name}
