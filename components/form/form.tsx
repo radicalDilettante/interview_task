@@ -1,8 +1,9 @@
-import React, { ChangeEvent, ChangeEventHandler, FormEvent } from "react";
+import React, { ChangeEventHandler } from "react";
 import NumberArrInput from "@/components/number_arr_input/number_arr_input";
 import NumberInput from "@/components/number_input/number_input";
 import ToggleButton from "@/components/toggle_button/toggle_button";
 import { FinStatus } from "@/services/calculate/calculate";
+import styles from "./form.module.css";
 
 interface IProps {
   values: FinStatus;
@@ -12,7 +13,7 @@ interface IProps {
 
 export default function Form({ values, handleChangeNumber, setValue }: IProps) {
   return (
-    <form>
+    <form className={styles.container}>
       {/* salary */}
       <ToggleButton
         name="hasPartner"

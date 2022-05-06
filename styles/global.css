@@ -45,6 +45,11 @@ a {
   text-decoration: none;
 }
 
+p {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
 code {
   background: #fafafa;
   border-radius: 5px;

@@ -1,12 +1,11 @@
 import Head from "next/head";
-import styles from "@/pages/index.module.css";
+import styles from "@/styles/index.module.css";
 import useForm from "@/hooks/use_form/use_form";
 import Form from "@/components/form/form";
 import CalculateService, {
   FinStatus,
   Response,
 } from "@/services/calculate/calculate";
-import { useEffect, useState } from "react";
 import Result from "@/components/result/result";
 
 interface IProps {
@@ -36,12 +35,16 @@ export default function Home({ calculate }: IProps) {
   });
   return (
     <div className={styles.container}>
-      <Form
-        values={values}
-        handleChangeNumber={handleChangeNumber}
-        setValue={setValue}
-      />
-      <Result response={response} values={values} calculate={calculate} />
+      <section className={styles.form}>
+        <Form
+          values={values}
+          handleChangeNumber={handleChangeNumber}
+          setValue={setValue}
+        />
+      </section>
+      <section className={styles.result}>
+        <Result response={response} values={values} calculate={calculate} />
+      </section>
     </div>
   );
 }

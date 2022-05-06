@@ -1,0 +1,13 @@
+.switch {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.switch div {
+  width: 49%;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 2px 0;
+}

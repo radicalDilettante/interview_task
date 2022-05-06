@@ -1,0 +1,16 @@
+.container {
+  cursor: pointer;
+}
+
+.container:hover {
+  transform: scale(1.02);
+}
+
+.activated {
+  background-color: var(--pink-button);
+  color: white;
+}
+
+.deactivated {
+  background-color: var(--grey-button);
+}

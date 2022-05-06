@@ -3,7 +3,7 @@ import CalculateService, {
   Response,
 } from "@/services/calculate/calculate";
 import React from "react";
-
+import styles from "./result.module.css";
 interface IProps {
   response?: Response;
   values: FinStatus;
@@ -11,29 +11,39 @@ interface IProps {
 }
 export default function Result({ response, values, calculate }: IProps) {
   return (
-    <div>
-      <p>Here&apos;s what you can borrow</p>
-      <b>{response?.borrowing.toLocaleString("en-NZ")}</b>
-      <p>Total income</p>
-      <p>{calculate.getTotalIncome(values).toLocaleString("en-NZ")}</p>
+    <div className={styles.container}>
+      <div className={styles.borrowing}>
+        <p>Here&apos;s what you can borrow</p>
+        <b>${response?.borrowing.toLocaleString("en-NZ")}</b>
+      </div>
+
       {values.deposit > 0 && (
-        <p>
+        <div className={styles.others}>
           With your deposit of ${values.deposit.toLocaleString("en-NZ")} you
           could afford a property up to $
           {response?.property_price.toLocaleString("en-NZ")}
-        </p>
+        </div>
       )}
+
+      <div className={styles.others}>
+        <p>Total income</p>
+        <p>${calculate.getTotalIncome(values).toLocaleString("en-NZ")}</p>
+      </div>
+
       {values.hasLoan && (
-        <>
+        <div className={styles.others}>
           <p>Total loans</p>
-          <p>{calculate.getTotalLoan(values).toLocaleString("en-NZ")}</p>
-        </>
+          <p>${calculate.getTotalLoan(values).toLocaleString("en-NZ")}</p>
+        </div>
       )}
+
       {values.hasCreditCard && (
-        <>
+        <div className={styles.others}>
           <p>Total creditcards</p>
-          <p>{calculate.getTotalCreditCards(values).toLocaleString("en-NZ")}</p>
-        </>
+          <p>
+            ${calculate.getTotalCreditCards(values).toLocaleString("en-NZ")}
+          </p>
+        </div>
       )}
     </div>
   );

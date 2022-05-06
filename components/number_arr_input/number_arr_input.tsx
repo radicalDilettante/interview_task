@@ -1,5 +1,5 @@
-import React, { ChangeEventHandler, useEffect, useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import styles from "./number_arr_input.module.css";
 interface IProps {
   name: string;
   value: number[];
@@ -23,19 +23,23 @@ export default function NumberArrInput({
     <div>
       <p>{desc}</p>
       {arr.map((num, index) => (
-        <div key={`${name} ${index}`}>
-          <input
-            type="number"
-            value={num}
-            onChange={(e) => {
-              const { value } = e.target;
-              const newArr = [...arr];
-              newArr[index] = parseInt(value);
-              setArr(newArr);
-              setValue(name, newArr);
-            }}
-          />
+        <div key={`${name} ${index}`} className={styles.item}>
+          <div className={styles.input_wrapper}>
+            <span>$</span>
+            <input
+              type="number"
+              value={num}
+              onChange={(e) => {
+                const { value } = e.target;
+                const newArr = [...arr];
+                newArr[index] = parseInt(value);
+                setArr(newArr);
+                setValue(name, newArr);
+              }}
+            />
+          </div>
           <button
+            className={styles.delete_button}
             onClick={(e) => {
               e.preventDefault();
               const newArr = arr;
@@ -49,6 +53,7 @@ export default function NumberArrInput({
         </div>
       ))}
       <button
+        className={styles.add_button}
         onClick={(e) => {
           e.preventDefault();
           const newArr = arr;
@@ -56,7 +61,9 @@ export default function NumberArrInput({
           setArr(newArr);
           setValue(name, newArr);
         }}
-      />
+      >
+        Add {name}
+      </button>
     </div>
   );
 }

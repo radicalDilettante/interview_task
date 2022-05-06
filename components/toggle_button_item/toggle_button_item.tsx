@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./toggle_button_item.module.css";
 
 interface IProps {
   status: string;
@@ -15,6 +16,9 @@ export default function ToggleButtonItem({
 }: IProps) {
   return (
     <div
+      className={`${styles.container} ${
+        currentValue == keyValue ? styles.activated : styles.deactivated
+      }`}
       onClick={() => {
         setValue(keyValue);
       }}

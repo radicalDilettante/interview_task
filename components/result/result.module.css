@@ -1,0 +1,14 @@
+.container {
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--grey-bg);
+}
+
+.borrowing {
+  margin-bottom: 30px;
+}
+
+.others {
+  margin-bottom: 20px;
+}
