@@ -62,6 +62,6 @@ export default class CalculateService {
   }
 
   private sum(arr: number[]) {
-    return arr.reduce((a, b) => a + b);
+    return arr.length >0 ? arr.reduce((a, b) => a + b) : 0
   }
 }
