@@ -17,7 +17,7 @@ export default function Result({ response, values, calculate }: IProps) {
         <b>${response?.borrowing.toLocaleString("en-NZ")}</b>
       </div>
 
-      {values.deposit > 0 && (
+      {values.deposit && (
         <div className={styles.others}>
           With your deposit of ${values.deposit.toLocaleString("en-NZ")} you
           could afford a property up to $
