@@ -26,60 +26,64 @@ export default function NumberArrInput({
 
   return (
     <div>
-      <p>{desc}</p>
       {arr.map((num, index) => (
-        <div key={`${name} ${index}`} className={styles.item}>
-          <div className={styles.input_wrapper}>
-            <span>$</span>
-            <input
-              type="number"
-              value={num}
-              placeholder="0"
-              onChange={(e) => {
-                const { value } = e.target;
-                const newArr = [...arr];
-                newArr[index] = parseInt(value);
-                setArr(newArr);
-                setValue(name, newArr);
-              }}
-            />
-          </div>
-          <div className={styles.button_wrapper}>
-            {periodName && (
-              <select
-                className={styles.select}
-                name={periodName}
+        <div key={`${name} ${index}`}>
+          <p>
+            {desc} #{index + 1}
+          </p>
+          <div className={styles.item}>
+            <div className={styles.input_wrapper}>
+              <span>$</span>
+              <input
+                type="number"
+                value={num}
+                placeholder="0"
                 onChange={(e) => {
                   const { value } = e.target;
-                  const newArr = [...periodArr!];
-                  newArr[index] = value;
-                  setPeriodArr(newArr);
-                  setValue(periodName, newArr);
+                  const newArr = [...arr];
+                  newArr[index] = parseInt(value);
+                  setArr(newArr);
+                  setValue(name, newArr);
+                }}
+              />
+            </div>
+            <div className={styles.button_wrapper}>
+              {periodName && (
+                <select
+                  className={styles.select}
+                  name={periodName}
+                  onChange={(e) => {
+                    const { value } = e.target;
+                    const newArr = [...periodArr!];
+                    newArr[index] = value;
+                    setPeriodArr(newArr);
+                    setValue(periodName, newArr);
+                  }}
+                >
+                  <option value="year">per year</option>
+                  <option value="week">per week</option>
+                </select>
+              )}
+              <button
+                className={styles.delete_button}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const newArr = arr;
+                  newArr.splice(index, 1);
+                  setArr(newArr);
+                  setValue(name, newArr);
+
+                  if (periodName) {
+                    const newPeriodArr = periodArr;
+                    newPeriodArr!.splice(index, 1);
+                    setPeriodArr(newPeriodArr);
+                    setValue(periodName!, newPeriodArr!);
+                  }
                 }}
               >
-                <option value="year">per year</option>
-                <option value="week">per week</option>
-              </select>
-            )}
-            <button
-              className={styles.delete_button}
-              onClick={(e) => {
-                e.preventDefault();
-                const newArr = arr;
-                newArr.splice(index, 1);
-                setArr(newArr);
-                setValue(name, newArr);
-
-                if (periodName) {
-                  const newPeriodArr = periodArr;
-                  newPeriodArr!.splice(index, 1);
-                  setPeriodArr(newPeriodArr);
-                  setValue(periodName!, newPeriodArr!);
-                }
-              }}
-            >
-              x
-            </button>
+                x
+              </button>
+            </div>
           </div>
         </div>
       ))}
