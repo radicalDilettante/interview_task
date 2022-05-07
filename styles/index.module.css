@@ -12,3 +12,9 @@
 .result {
   flex: 1;
 }
+
+@media (max-width: 481px) {
+  .container {
+    flex-direction: column-reverse;
+  }
+}

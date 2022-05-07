@@ -1,5 +1,6 @@
 .container {
   padding: 20px;
+  margin: 20px;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   background-color: var(--grey-bg);
@@ -11,4 +12,10 @@
 
 .others {
   margin-bottom: 20px;
+}
+
+@media (max-width: 481px) {
+  .container {
+    margin-bottom: 0;
+  }
 }
