@@ -10,11 +10,13 @@ interface IProps {
   calculate: CalculateService;
 }
 export default function Result({ response, values, calculate }: IProps) {
+  const borrowing = response?.borrowing.toLocaleString("en-NZ");
+
   return (
     <div className={styles.container}>
       <div className={styles.borrowing}>
         <p>Here&apos;s what you can borrow</p>
-        <b>${response?.borrowing.toLocaleString("en-NZ")}</b>
+        <b>${parseInt(borrowing!) > 0 ? borrowing : 0}</b>
       </div>
 
       {values.deposit && (
