@@ -69,13 +69,14 @@ export default class CalculateService {
 
     return totalBaseSalary + totalOtherIncome;
   }
+
   public getTotalLiabilities(value: FinStatus) {
-    const loans = this.getTotalLoan(value);
+    const loans = this.getTotalLoans(value);
     const creditCards = this.getTotalCreditCards(value);
     return loans + creditCards;
   }
 
-  public getTotalLoan(value: FinStatus) {
+  public getTotalLoans(value: FinStatus) {
     return value.hasLoan ? this.sum(value.loans) : 0;
   }
 

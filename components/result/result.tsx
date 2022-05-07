@@ -33,7 +33,7 @@ export default function Result({ response, values, calculate }: IProps) {
       {values.hasLoan && (
         <div className={styles.others}>
           <p>Total loans</p>
-          <p>${calculate.getTotalLoan(values).toLocaleString("en-NZ")}</p>
+          <p>${calculate.getTotalLoans(values).toLocaleString("en-NZ")}</p>
         </div>
       )}
 
