@@ -42,6 +42,15 @@ export default function Home({ calculate }: IProps) {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Calculator</title>
+        <meta name="author" content="Wayne Choi" />
+        <meta name="description" content="Caculator for home loan" />
+        <meta
+          name="keywords"
+          content="motage, home loan, loan, bank, property, calculator"
+        />
+      </Head>
       <section className={styles.form}>
         <Form
           values={values}
