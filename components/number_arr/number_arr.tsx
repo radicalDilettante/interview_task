@@ -29,6 +29,7 @@ export default function NumberArr({
     <div>
       {arr.map((num, index) => (
         <NumberArrItem
+          key={`${name} ${index}`}
           index={index}
           desc={desc}
           num={num}

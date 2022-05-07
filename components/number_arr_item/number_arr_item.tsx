@@ -25,7 +25,7 @@ export default function NumberArrItem({
   setPeriodArr,
 }: IProps) {
   return (
-    <div key={`${name} ${index}`}>
+    <div>
       <p>
         {desc} #{index + 1}
       </p>

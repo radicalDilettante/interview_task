@@ -1,5 +1,5 @@
 import React, { ChangeEventHandler } from "react";
-import NumberArr from "@/components/number_arr_input/number_arr";
+import NumberArr from "@/components/number_arr/number_arr";
 import NumberInput from "@/components/number_input/number_input";
 import ToggleButton from "@/components/toggle_button/toggle_button";
 import { FinStatus } from "@/services/calculate/calculate";
