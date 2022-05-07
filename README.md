@@ -47,6 +47,10 @@ The provided API returns negative numbers for borrowing. It is an amount of mone
 
 It was not required. But if I found it when working, I might ask back about it.
 
+## CSS Modules
+
+I made global variables for CSS styling. It helps to get more maintainability.
+
 ## Audit test
 
 I did audit test with Chrome lighthouse tool.
