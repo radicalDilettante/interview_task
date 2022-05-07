@@ -2,7 +2,7 @@ import React, { ChangeEventHandler } from "react";
 import styles from "./number_input.module.css";
 interface IProps {
   name: string;
-  value: number;
+  value: number | undefined;
   desc: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
   periodName?: string;
