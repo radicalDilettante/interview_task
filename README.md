@@ -1,25 +1,49 @@
-# Next.js + Jest
+# Calculator
 
-This example shows how to configure Jest to work with Next.js.
+This project is a dev interview task for employment. I build an application with Next.js.
 
-This includes Next.js' built-in support for Global CSS, CSS Modules and TypeScript.
+I tried to copy the implementation in the provided video as much as I could.
 
-## How to Use
+## Sample
 
-Quickly get started using [Create Next App](https://github.com/vercel/next.js/tree/canary/packages/create-next-app#readme)!
+[https://wayne-task.netlify.app/](https://wayne-task.netlify.app/)
 
-In your terminal, run the following command:
+## Getting started
 
-```bash
-npx create-next-app --example with-jest with-jest-app
-# or
-yarn create next-app --example with-jest with-jest-app
-# or
-pnpm create next-app -- --example with-jest with-jest-app
+```
+npm install
+npm run build
+npm start
 ```
 
-## Run Jest Tests
+## Total elapsed time
 
-```bash
-npm test
+I recorded how long I spent on each commit on the log.
+Total Elapsed time is about 10 hours.
+
+## CORS errors
+
+The CORS configuration isn't set up for the provided API. I made an API endpoint with Next.js API route feature to proxy.
+
+## Custom hooks
+
+I made a custom hooks to manipulate data from form and input. I used generic to get more reusability.
+
+## Unit test
+
 ```
+npm run test
+```
+
+I wrote unit test codes only for business logics with Jest, and React Test Library.
+
+## Responsive Layout
+
+I used media query to implement responsive layout for mobile client.
+
+## Audit test
+
+I did audit test with Chrome lighthouse tool.
+A link to the result is below.
+
+[Link](https://wayne-task.netlify.app/test.html)
