@@ -12,6 +12,10 @@ body {
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: none;
+}
+
 main {
   padding: 5rem 0;
   flex: 1;
