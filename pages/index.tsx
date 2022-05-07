@@ -15,18 +15,18 @@ interface IProps {
 export default function Home({ calculate }: IProps) {
   const initialValues: FinStatus = {
     hasPartner: false,
-    baseSalary: 0,
+    baseSalary: undefined,
     baseSalaryPeriod: "year",
-    secondBaseSalary: 0,
+    secondBaseSalary: undefined,
     secondBaseSalaryPeriod: "year",
     hasOtherIncome: false,
-    otherIncome: [0],
+    otherIncome: [undefined],
     otherIncomePeriod: ["year"],
     hasLoan: false,
-    loans: [0],
+    loans: [undefined],
     hasCreditCard: false,
-    creditCards: [0],
-    deposit: 0,
+    creditCards: [undefined],
+    deposit: undefined,
   };
 
   const {

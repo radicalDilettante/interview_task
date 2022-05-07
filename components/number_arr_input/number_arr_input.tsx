@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import styles from "./number_arr_input.module.css";
 interface IProps {
   name: string;
-  value: number[];
+  value: (number | undefined)[];
   desc: string;
-  setValue: (name: string, value: number[] | string[]) => void;
+  setValue: Function;
   periodName?: string;
   periodValue?: string[];
 }
@@ -34,6 +34,7 @@ export default function NumberArrInput({
             <input
               type="number"
               value={num}
+              placeholder="0"
               onChange={(e) => {
                 const { value } = e.target;
                 const newArr = [...arr];
@@ -87,7 +88,7 @@ export default function NumberArrInput({
         onClick={(e) => {
           e.preventDefault();
           const newArr = arr;
-          newArr.push(0);
+          newArr.push(undefined);
           setArr(newArr);
           setValue(name, newArr);
 

@@ -2,18 +2,18 @@ type period = "year" | "week";
 
 export type FinStatus = {
   hasPartner: boolean;
-  baseSalary: number;
+  baseSalary: number | undefined;
   baseSalaryPeriod: period;
-  secondBaseSalary: number;
+  secondBaseSalary: number | undefined;
   secondBaseSalaryPeriod: period;
   hasOtherIncome: boolean;
-  otherIncome: number[];
+  otherIncome: (number | undefined)[];
   otherIncomePeriod: period[];
   hasLoan: boolean;
-  loans: number[];
+  loans: (number | undefined)[];
   hasCreditCard: boolean;
-  creditCards: number[];
-  deposit: number;
+  creditCards: (number | undefined)[];
+  deposit: number | undefined;
 };
 
 export type Response = {
@@ -44,14 +44,17 @@ export default class CalculateService {
   };
 
   public getTotalIncome(value: FinStatus) {
-    const baseSalary =
-      value.baseSalaryPeriod === "year"
-        ? value.baseSalary
-        : value.baseSalary * 52;
-    const secondBaseSalary =
+    let baseSalary = value.baseSalary ? value.baseSalary : 0;
+    let secondBaseSalary = value.secondBaseSalary ? value.secondBaseSalary : 0;
+
+    baseSalary =
+      value.baseSalaryPeriod === "year" ? baseSalary : baseSalary * 52;
+
+    secondBaseSalary =
       value.secondBaseSalaryPeriod === "year"
-        ? value.secondBaseSalary
-        : value.secondBaseSalary * 52;
+        ? secondBaseSalary
+        : secondBaseSalary * 52;
+
     const totalBaseSalary: number = value.hasPartner
       ? baseSalary + secondBaseSalary
       : baseSalary;
@@ -59,11 +62,12 @@ export default class CalculateService {
     let totalOtherIncome: number = 0;
     if (value.hasOtherIncome) {
       for (let i = 0; i < value.otherIncome.length; i++) {
+        const incomeItem = value.otherIncome[i] ? value.otherIncome[i] : 0;
+
         const income =
-          value.otherIncomePeriod[i] === "year"
-            ? value.otherIncome[i]
-            : value.otherIncome[i] * 52;
-        totalOtherIncome += income;
+          value.otherIncomePeriod[i] === "year" ? incomeItem : incomeItem! * 52;
+
+        totalOtherIncome += income!;
       }
     }
 
@@ -77,14 +81,28 @@ export default class CalculateService {
   }
 
   public getTotalLoans(value: FinStatus) {
-    return value.hasLoan ? this.sum(value.loans) : 0;
+    let totalLoan = 0;
+
+    if (value.hasLoan) {
+      value.loans.forEach((i) => {
+        const loan = i ? i : 0;
+        totalLoan += loan;
+      });
+    }
+
+    return totalLoan;
   }
 
   public getTotalCreditCards(value: FinStatus) {
-    return value.hasCreditCard ? this.sum(value.creditCards) : 0;
-  }
+    let totalCreditCards = 0;
 
-  private sum(arr: number[]) {
-    return arr.length > 0 ? arr.reduce((a, b) => a + b) : 0;
+    if (value.hasCreditCard) {
+      value.creditCards.forEach((i) => {
+        const creditCard = i ? i : 0;
+        totalCreditCards += creditCard;
+      });
+    }
+
+    return totalCreditCards;
   }
 }

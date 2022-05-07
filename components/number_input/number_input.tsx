@@ -23,7 +23,13 @@ export default function NumberInput({
       <div className={styles.item}>
         <div className={styles.input_wrapper}>
           <span>$</span>
-          <input type="number" name={name} value={value} onChange={onChange} />
+          <input
+            type="number"
+            name={name}
+            value={value}
+            onChange={onChange}
+            placeholder="0"
+          />
         </div>
         {periodName && (
           <select
