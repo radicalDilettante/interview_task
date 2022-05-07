@@ -25,39 +25,37 @@ export default function ToggleButton({
     onChange(name, checked);
   }, [checked]);
 
+  const FalseButton = () => (
+    <ToggleButtonItem
+      status={falseStatus}
+      keyValue={false}
+      currentValue={checked}
+      setValue={setChecked}
+    />
+  );
+
+  const TrueButton = () => (
+    <ToggleButtonItem
+      status={trueStatus}
+      keyValue={true}
+      currentValue={checked}
+      setValue={setChecked}
+    />
+  );
+
   return (
     <div>
       <p>{desc}</p>
       <div className={styles.switch}>
         {name === "hasPartner" ? (
           <>
-            <ToggleButtonItem
-              status={falseStatus}
-              keyValue={false}
-              currentValue={checked}
-              setValue={setChecked}
-            />
-            <ToggleButtonItem
-              status={trueStatus}
-              keyValue={true}
-              currentValue={checked}
-              setValue={setChecked}
-            />
+            <FalseButton />
+            <TrueButton />
           </>
         ) : (
           <>
-            <ToggleButtonItem
-              status={trueStatus}
-              keyValue={true}
-              currentValue={checked}
-              setValue={setChecked}
-            />
-            <ToggleButtonItem
-              status={falseStatus}
-              keyValue={false}
-              currentValue={checked}
-              setValue={setChecked}
-            />
+            <TrueButton />
+            <FalseButton />
           </>
         )}
       </div>

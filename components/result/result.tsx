@@ -4,11 +4,13 @@ import CalculateService, {
 } from "@/services/calculate/calculate";
 import React from "react";
 import styles from "./result.module.css";
+
 interface IProps {
   response?: Response;
   values: FinStatus;
   calculate: CalculateService;
 }
+
 export default function Result({ response, values, calculate }: IProps) {
   const borrowing = response?.borrowing.toLocaleString("en-NZ");
 

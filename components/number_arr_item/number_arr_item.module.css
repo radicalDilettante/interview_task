@@ -40,14 +40,3 @@
 .button_wrapper select {
   border: none;
 }
-.add_button {
-  text-align: center;
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  padding: 5px 20px;
-  cursor: pointer;
-  margin-top: 5px;
-}
-.add_button:hover {
-  transform: scale(1.02);
-}

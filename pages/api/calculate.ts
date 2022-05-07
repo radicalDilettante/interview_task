@@ -4,9 +4,11 @@ export default async function Calculate(
   res: NextApiResponse
 ) {
   const { total_income, total_liabilities, deposit } = req.body;
+
   const sanitize = (input: any) => {
     return input ? parseInt(input) : 0;
   };
+
   const response = await fetch(
     "https://react-dev-test-api.vercel.app/api/test",
     {
@@ -21,5 +23,6 @@ export default async function Calculate(
       }),
     }
   );
+
   res.status(200).json(await response.json());
 }

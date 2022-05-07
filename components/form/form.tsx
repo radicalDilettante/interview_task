@@ -1,5 +1,5 @@
 import React, { ChangeEventHandler } from "react";
-import NumberArrInput from "@/components/number_arr_input/number_arr_input";
+import NumberArr from "@/components/number_arr_input/number_arr";
 import NumberInput from "@/components/number_input/number_input";
 import ToggleButton from "@/components/toggle_button/toggle_button";
 import { FinStatus } from "@/services/calculate/calculate";
@@ -58,7 +58,7 @@ export default function Form({
         onChange={setValue}
       />
       {values.hasOtherIncome && (
-        <NumberArrInput
+        <NumberArr
           name="otherIncome"
           value={values.otherIncome}
           desc="Other income"
@@ -78,7 +78,7 @@ export default function Form({
         onChange={setValue}
       />
       {values.hasLoan && (
-        <NumberArrInput
+        <NumberArr
           name="loans"
           value={values.loans}
           desc="Loan"
@@ -96,7 +96,7 @@ export default function Form({
         onChange={setValue}
       />
       {values.hasCreditCard && (
-        <NumberArrInput
+        <NumberArr
           name="creditCards"
           value={values.creditCards}
           desc="Credit Card"
