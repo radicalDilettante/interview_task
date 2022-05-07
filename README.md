@@ -41,6 +41,12 @@ I wrote unit test codes only for business logics with Jest, and React Test Libra
 
 I used media query to implement responsive layout for mobile client.
 
+## Sanitized result
+
+The provided API returns negative numbers for borrowing. It is an amount of money, so it could not be a negative number. I sanitized the result before rendering.
+
+It was not required. But if I found it when working, I might ask back about it.
+
 ## Audit test
 
 I did audit test with Chrome lighthouse tool.
