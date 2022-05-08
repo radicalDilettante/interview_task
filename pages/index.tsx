@@ -51,6 +51,7 @@ export default function Home({ calculate }: IProps) {
           content="motage, home loan, loan, bank, property, calculator"
         />
       </Head>
+
       <section className={styles.form}>
         <Form
           values={values}
@@ -59,6 +60,7 @@ export default function Home({ calculate }: IProps) {
           handleChangeSelector={handleChangeSelector}
         />
       </section>
+
       <section className={styles.result}>
         <Result response={response} values={values} calculate={calculate} />
       </section>
